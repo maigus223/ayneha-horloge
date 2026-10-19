@@ -1,0 +1,12 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later
+     Copyright (C) 2026 MAIGUS -->
+<resources>
+    <color name="indigo_950">#0B1526</color>
+    <color name="indigo_900">#101B30</color>
+    <color name="indigo_800">#182642</color>
+    <color name="sand">#F1E8D8</color>
+    <color name="sand_dim">#D9CDB4</color>
+    <color name="gold">#C6912F</color>
+    <color name="gold_bright">#E0AC47</color>
+    <color name="line">#24304B</color>
+</resources>

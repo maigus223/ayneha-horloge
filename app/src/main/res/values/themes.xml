@@ -1,0 +1,10 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later
+     Copyright (C) 2026 MAIGUS -->
+<resources>
+    <style name="Theme.AynehaHorloge" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/indigo_900</item>
+        <item name="android:statusBarColor">@color/indigo_950</item>
+        <item name="android:navigationBarColor">@color/indigo_950</item>
+        <item name="colorPrimary">@color/gold_bright</item>
+    </style>
+</resources>

@@ -1,0 +1,12 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later
+     Copyright (C) 2026 MAIGUS -->
+<resources>
+    <string name="app_name">AYNEHA Horloge</string>
+    <string name="widget_horloge_name">AYNEHA - Horloge</string>
+    <string name="widget_horloge_desc">Heure en direct, en écriture AYNEHA.</string>
+    <string name="info_button_desc">Confidentialité</string>
+    <string name="privacy_title">Confidentialité</string>
+    <string name="privacy_version_format">Version %1$s - Dernière mise à jour : %2$s</string>
+    <string name="privacy_last_update">11 octobre 2026</string>
+    <string name="privacy_body">AYNEHA Horloge ne collecte, ne stocke et ne transmet aucune donnée personnelle.\n\nAucun compte, aucun serveur : l\'horloge, le calendrier et le widget fonctionnent entièrement sur votre appareil, sans connexion internet.\n\nL\'application lit uniquement l\'heure et la date de votre téléphone pour les afficher en écriture AYNEHA. Rien n\'est enregistré, envoyé ni partagé avec qui que ce soit.\n\nPermissions : les alarmes exactes servent uniquement à actualiser le widget à la minute pile, et le démarrage de l\'appareil à le replanifier après un redémarrage. Aucune autre autorisation n\'est demandée.\n\nAucune publicité, aucun traceur, aucune bibliothèque d\'analyse tierce.\n\nLogiciel libre : AYNEHA Horloge est un logiciel libre, développé par MAIGUS avec l\'aide d\'outils d\'IA (Claude, Anthropic). Il est publié sous licence GPL v3 ou ultérieure : vous pouvez l\'utiliser, l\'étudier, le modifier et le partager. Toute version modifiée distribuée doit rester libre, sous la même licence. Police : SIL Open Font License 1.1. Code source : github.com/maigus223/ayneha-horloge\n\nDéveloppé par MAIGUS : gwokmt2q@duck.com</string>
+</resources>
