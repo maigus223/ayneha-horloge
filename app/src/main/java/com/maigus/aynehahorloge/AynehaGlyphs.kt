@@ -3,86 +3,48 @@
 
 package com.maigus.aynehahorloge
 
-import java.util.Calendar
-
 /**
- * Table des glyphes AYNEHA (zone d'usage privé Unicode) et fonctions de
- * conversion, reprises à l'identique de horloge.html pour garantir un
- * affichage cohérent entre l'application et les widgets.
+ * Glyphes AYNEHA (Plan 16, police ayneha_pro.ttf), identiques à index.html.
+ * Tout texte est gardé dans l'ordre LOGIQUE (ordre de lecture) : c'est le
+ * dessin (GlyphBitmap) qui place le premier glyphe à droite. Aucune inversion.
  */
 object AynehaGlyphs {
 
-    private val DIGITS = arrayOf(
-        "\uDBFF\uDF7C", "\uDBFF\uDF7D", "\uDBFF\uDF7E", "\uDBFF\uDF7F", "\uDBFF\uDF80",
-        "\uDBFF\uDF81", "\uDBFF\uDF82", "\uDBFF\uDF83", "\uDBFF\uDF84", "\uDBFF\uDF85"
-    )
-
-    val LABEL_GUURU = "\uDBFF\uDF98\uDBFF\uDFAB\uDBFF\uDF8F\uDBFF\uDFA0" // heure
-    val LABEL_HAN = "\uDBFF\uDF9A\uDBFF\uDF9C\uDBFF\uDFBC"          // jour
-    val LABEL_HADU = "\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8B\uDBFF\uDFA0"   // mois
-
-    val DAYS_FULL = arrayOf(
-        "\uDBFF\uDF89\uDBFF\uDF9C\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8C\uDBFF\uDF9D\uDBFF\uDF95\uDBFF\uDF9E", // Dimanche
-        "\uDBFF\uDF88\uDBFF\uDF9C\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8C\uDBFF\uDF9D\uDBFF\uDF95\uDBFF\uDF9E", // Lundi
-        "\uDBFF\uDF86\uDBFF\uDF9F\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8C\uDBFF\uDF9D\uDBFF\uDF95\uDBFF\uDF9E", // Mardi
-        "\uDBFF\uDF8A\uDBFF\uDF9F\uDBFF\uDFCC\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8C\uDBFF\uDF9D\uDBFF\uDF95\uDBFF\uDF9E", // Mercredi
-        "\uDBFF\uDF8C\uDBFF\uDF9F\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8C\uDBFF\uDF9D\uDBFF\uDF95\uDBFF\uDF9E", // Jeudi
-        "\uDBFF\uDF91\uDBFF\uDFA7\uDBFF\uDF86\uDBFF\uDFA0\uDBFF\uDF91\uDBFF\uDF9C",             // Vendredi
-        "\uDBFF\uDF8B\uDBFF\uDFA0\uDBFF\uDF9A\uDBFF\uDFA2\uDBFF\uDF8C\uDBFF\uDF9D\uDBFF\uDF95\uDBFF\uDF9E"  // Samedi
-    )
-
-    val DAYS_SHORT = arrayOf(
-        "\uDBFF\uDF89\uDBFF\uDF9C\uDBFF\uDF9A",
-        "\uDBFF\uDF88\uDBFF\uDF9C\uDBFF\uDF9A",
-        "\uDBFF\uDF86\uDBFF\uDF9F\uDBFF\uDF9A",
-        "\uDBFF\uDF8A\uDBFF\uDF9F\uDBFF\uDFCC",
-        "\uDBFF\uDF8C\uDBFF\uDF9F\uDBFF\uDF9A",
-        "\uDBFF\uDF91\uDBFF\uDFA7\uDBFF\uDF86",
-        "\uDBFF\uDF8B\uDBFF\uDFA0\uDBFF\uDF9A"
-    )
-
-    val MONTHS = arrayOf(
-        "\uDBFF\uDF8B\uDBFF\uDF9C\uDBFF\uDF8B\uDBFF\uDF9C\uDBFF\uDFB6\uDBFF\uDF86\uDBFF\uDFA3\uDBFF\uDF8F\uDBFF\uDF9E",       // Janvier
-        "\uDBFF\uDF8B\uDBFF\uDF9C\uDBFF\uDF8B\uDBFF\uDF9C\uDBFF\uDFB6\uDBFF\uDF99\uDBFF\uDF9C\uDBFF\uDFCC\uDBFF\uDF8D\uDBFF\uDF9C", // Février
-        "\uDBFF\uDF98\uDBFF\uDFA1\uDBFF\uDF8D\uDBFF\uDF9E",                                     // Mars
-        "\uDBFF\uDF98\uDBFF\uDFA1\uDBFF\uDF8D\uDBFF\uDF9E\uDBFF\uDF86\uDBFF\uDFA2\uDBFF\uDF8B\uDBFF\uDF9C",             // Avril
-        "\uDBFF\uDF86\uDBFF\uDFA7\uDBFF\uDF99\uDBFF\uDFA0\uDBFF\uDF8D\uDBFF\uDF9C",                         // Mai
-        "\uDBFF\uDF86\uDBFF\uDFA7\uDBFF\uDF86\uDBFF\uDF9E\uDBFF\uDF8D\uDBFF\uDF9C",                         // Juin
-        "\uDBFF\uDF8A\uDBFF\uDF9F\uDBFF\uDFCC\uDBFF\uDF91\uDBFF\uDF9D\uDBFF\uDF8D\uDBFF\uDF9C",                   // Juillet
-        "\uDBFF\uDF93\uDBFF\uDF9D\uDBFF\uDF99\uDBFF\uDFAA\uDBFF\uDFBB\uDBFF\uDF9C",                         // Août
-        "\uDBFF\uDF88\uDBFF\uDFA3\uDBFF\uDF9A\uDBFF\uDF9C\uDBFF\uDFB6",                               // Septembre
-        "\uDBFF\uDF88\uDBFF\uDFA3\uDBFF\uDF89\uDBFF\uDFA3\uDBFF\uDF8F\uDBFF\uDF9E",                         // Octobre
-        "\uDBFF\uDF9A\uDBFF\uDFA0\uDBFF\uDF8D\uDBFF\uDFA2\uDBFF\uDF91\uDBFF\uDF9C\uDBFF\uDFB2",                   // Novembre
-        "\uDBFF\uDF93\uDBFF\uDF9E\uDBFF\uDFAE\uDBFF\uDF90\uDBFF\uDF9E"                                // Décembre
-    )
-
-    /** Convertit un nombre en chiffres AYNEHA, dans l'ordre naturel (ex: 12 -> glyphe1 glyphe2). */
-    fun toAy(n: Int): String = n.toString().map { DIGITS[it - '0'] }.joinToString("")
-
-    /** Convertit un nombre 0-59 en 2 chiffres AYNEHA inversés (ex: 35 -> glyphes de "53"). */
-    fun toAy2Rev(n: Int): String {
-        val s = n.toString().padStart(2, '0')
-        val rev = "" + s[1] + s[0]
-        return toAy(rev.toInt())
+    /** g("8B 9C") -> U+10FF8B U+10FF9C */
+    private fun g(s: String): String = s.split(' ').joinToString("") {
+        String(Character.toChars(0x10FF00 + it.toInt(16)))
     }
 
-    /** Année songhay = année grégorienne + 2001, chiffres inversés puis convertis. */
-    fun yearGlyphs(gregorianYear: Int): String {
-        val songhayYear = gregorianYear + 2001
-        val rev = songhayYear.toString().reversed()
-        return rev.map { DIGITS[it - '0'] }.joinToString("")
-    }
+    private val DIGITS = listOf("7C", "7D", "7E", "7F", "80", "81", "82", "83", "84", "85").map { g(it) }
 
-    /** Heure:minute en glyphes AYNEHA, format identique à l'horloge du site (secondes en tête côté web,
-     *  mais pour le widget — mis à jour à la minute — on affiche heures : minutes). */
-    fun timeGlyphsHM(cal: Calendar): String {
-        val h = toAy2Rev(cal.get(Calendar.HOUR_OF_DAY))
-        val m = toAy2Rev(cal.get(Calendar.MINUTE))
-        return "$m:$h" // ordre repris du sens de lecture RTL utilisé sur horloge.html (mm:hh affiché)
-    }
+    val LABEL_GUURU = g("98 AB 8F A0")   // guuru (heure)
+    val LABEL_HAN = g("9A 9C BC")        // han (jour)
+    val LABEL_HADU = g("9A A2 8B A0")    // hãdu (mois)
+    val LABEL_HADO = g("9A A2 8B 9F")    // hãdo (lune)
+    val LABEL_JIIRI = g("94 A6 8F 9E")   // jiiri (année)
 
-    /** Calendar.DAY_OF_WEEK va de 1 (dimanche) à 7 (samedi) -> index 0..6 pour nos tableaux. */
-    fun dayIndex(cal: Calendar): Int = cal.get(Calendar.DAY_OF_WEEK) - 1
+    /** Index 0 = dimanche (Calendar.DAY_OF_WEEK - 1) : fahãtedji, mahãtedji, bohãtedji,
+     *  woyhãtedji, tohãtedji, zĩbuza, duhãtedji. Semaine : samedi -> vendredi. */
+    val DAYS_FULL = listOf(
+        "89 9C 9A A2 8C 9D 95 9E", "88 9C 9A A2 8C 9D 95 9E", "86 9F 9A A2 8C 9D 95 9E",
+        "8A 9F CC 9A A2 8C 9D 95 9E", "8C 9F 9A A2 8C 9D 95 9E", "91 A7 86 A0 91 9C",
+        "8B A0 9A A2 8C 9D 95 9E"
+    ).map { g(it) }
 
-    fun monthIndex(cal: Calendar): Int = cal.get(Calendar.MONTH)
+    /** Les 12 mois songhay (lunaires), index 0 = 1er mois du jiiri : dadaw-beeri,
+     *  dadaw-kayna, gaani, gaani-bãda, bĩkuna, bĩbina, woyzena, cekɔnna, meehaw,
+     *  meefeeri, hunãzam, cibsi. */
+    val LUNAR_MONTHS = listOf(
+        "8B 9C 8B 9C B6 86 A3 8F 9E", "8B 9C 8B 9C B6 99 9C CC 8D 9C", "98 A1 8D 9E",
+        "98 A1 8D 9E 86 A2 8B 9C", "86 A7 99 A0 8D 9C", "86 A7 86 9E 8D 9C",
+        "8A 9F CC 91 9D 8D 9C", "93 9D 99 AA BB 9C", "88 A3 9A 9C B6",
+        "88 A3 89 A3 8F 9E", "9A A0 8D A2 91 9C B2", "93 9E AE 90 9E"
+    ).map { g(it) }
+
+    /** Nombre en chiffres AYNEHA, ordre logique (12 -> glyphe 1, glyphe 2). */
+    fun num(n: Int): String = n.toString().map { DIGITS[it - '0'] }.joinToString("")
+
+    fun num2(n: Int): String = num(n).let { if (n < 10) DIGITS[0] + it else it }
+
+    fun timeHM(hour: Int, minute: Int): String = num2(hour) + ":" + num2(minute)
 }

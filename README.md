@@ -1,15 +1,21 @@
-# Horloge AYNEHA - Application Android + Widget (version 1.1.0)
+# AYNEHA Horloge - Application Android + Widgets (version 2.0)
 
-Application Android native qui reprend l'horloge et le calendrier AYNEHA (déjà
-publiés en PWA sur `https://maigus223.github.io/AYNEHA-CALENDRIER/`), avec en
-plus un **widget d'écran d'accueil** (Horloge).
+Application Android qui affiche l'horloge et le double calendrier AYNEHA
+(grégorien + lunaire songhay), entièrement en écriture AYNEHA et en vrai RTL,
+avec deux **widgets d'écran d'accueil**. La page `assets/index.html` est la
+même que la version web du site.
 
 ## Contenu du projet
 
 - **Application** (`MainActivity`) : affiche `assets/index.html` (la même app
   que la PWA, embarquée hors-ligne dans l'APK) via une WebView.
-- **Widget Horloge** (`HorlogeWidgetProvider`) : heure en direct (heures :
-  minutes), glyphes AYNEHA.
+- **Petit widget** (`HorlogeWidgetProvider`) : guuru + heure (heures : minutes).
+- **Grand widget** (`GrandWidgetProvider`) : heure, jour, hãdo (lune), date
+  lunaire songhay et jiiri.
+- **Calendrier lunaire** (`SonghayCalendar.kt`, et la même chose dans
+  `index.html`) : calendrier lunaire arithmétique (cycle de 30 ans),
+  année = année lunaire + 2577, jour lunaire qui change au coucher du soleil
+  (calculé pour Gao), réglage +/- 2 jours.
 - **Bouton « i »** (coin haut-gauche de l'application) : ouvre la page de
   confidentialité (`PrivacyActivity`).
 
@@ -30,7 +36,7 @@ direct, comme sur le site.
    automatique au premier lancement - nécessite une connexion internet pour
    télécharger Gradle et les dépendances).
 2. `Build > Generate Signed Bundle / APK` pour produire l'APK signé à
-   publier sur Naabiga (ou `Build > Build APK(s)` pour un APK de test non
+   publier sur ayneha.org et Naabiga (ou `Build > Build APK(s)` pour un APK de test non
    signé).
 3. `applicationId` actuel : `com.maigus.aynehahorloge` - à adapter si vous
    voulez un identifiant différent.
@@ -44,8 +50,8 @@ dans `app/src/main/res/mipmap-*/`.
 
 ## Ajouter les widgets sur l'écran d'accueil (une fois l'app installée)
 
-Appui long sur l'écran d'accueil → Widgets → chercher « Horloge AYNEHA » →
-glisser le widget Horloge.
+Appui long sur l'écran d'accueil → Widgets → chercher « AYNEHA Horloge » →
+glisser « AYNEHA - Horloge » (petit) ou « AYNEHA - Horloge et lune » (grand).
 
 ## Dépannage (environnements avec JDK 25 embarqué, ex. Android Studio récent)
 
@@ -64,6 +70,26 @@ lors des premiers tests :
 Si malgré tout Android Studio propose encore de changer le JDK ou la
 version de Gradle au premier sync, c'est sans danger : acceptez la version
 la plus haute qu'il propose.
+
+## Version 2.0
+
+- Vrai RTL partout : le texte reste dans l'ordre de lecture, chaque glyphe
+  est placé de droite à gauche (page web et widgets). Plus aucune inversion
+  de chaîne.
+- Double calendrier : grégorien + lunaire songhay dans la même grille, mois
+  lunaires qui chevauchent le mois grégorien, début de chaque mois lunaire
+  marqué. Semaine qui commence le samedi.
+- Nouveautés : phase de la lune (hãdo), détail d'un jour au toucher, bouton
+  « aujourd'hui », glissement du doigt entre les mois, mode veille de nuit,
+  partage de la date du jour en image, jours fériés (pastille), cadran à
+  aiguilles, réglage du début de mois lunaire.
+- Widgets fiables : relance après redémarrage, changement d'heure ou de
+  fuseau, mise à jour de l'appli ; repli si les alarmes exactes sont
+  refusées ; bouton batterie dans l'appli ; image à la taille réelle du
+  widget.
+- Palette bleu nuit / orange du site. Mises à jour web : `version.txt` +
+  page servie « réseau d'abord » par le service worker.
+- `versionCode` 3 / `versionName` 2.0.
 
 ## Version 1.1.0
 

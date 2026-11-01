@@ -1,12 +1,13 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later
      Copyright (C) 2026 MAIGUS -->
 <resources>
-    <color name="indigo_950">#0B1526</color>
-    <color name="indigo_900">#101B30</color>
-    <color name="indigo_800">#182642</color>
-    <color name="sand">#F1E8D8</color>
-    <color name="sand_dim">#D9CDB4</color>
-    <color name="gold">#C6912F</color>
-    <color name="gold_bright">#E0AC47</color>
+    <!-- Palette du site AYNEHA : bleu nuit et orange -->
+    <color name="indigo_950">#08101E</color>
+    <color name="indigo_900">#08101E</color>
+    <color name="indigo_800">#13213A</color>
+    <color name="sand">#F3ECE0</color>
+    <color name="sand_dim">#B9C0CF</color>
+    <color name="gold">#FF6A13</color>
+    <color name="gold_bright">#FF8A3D</color>
     <color name="line">#24304B</color>
 </resources>
